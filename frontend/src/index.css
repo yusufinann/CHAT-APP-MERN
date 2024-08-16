@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 body {
-	background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/chatbg.jfif");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("/cut-the-rope.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; /* Arka plan resminin ekranı tamamen kaplamasını sağlar */
+    background-position: center; /* Resmin ortalanmasını sağlar */
+    background-attachment: fixed; /* Resmin kaydırma esnasında sabit kalmasını sağlar */
+    height: 100vh; /* Tüm ekranı kaplaması için */
+    margin: 0;
+    overflow: hidden; /* İsteğe bağlı: Kaydırma çubuklarını gizlemek için */
 }
+
 
 /* dark mode looking scrollbar */
 ::-webkit-scrollbar {
