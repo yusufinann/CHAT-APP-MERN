@@ -75,11 +75,14 @@ try {
 };
 
 export const logout = (req, res) => {
- try {
-     res.send("jwt","",{maxAge:0})
-     res.status(200).json({message:"Logged out successfully"})
- } catch (error) {
-  console.log("Error in logot controller", error.message);
-  res.status(500).json({ error: "internal server error" });
- }
+  try {
+      // Clear the cookie by setting its maxAge to 0
+      res.cookie("jwt", "", { maxAge: 0 });
+
+      // Send a JSON response indicating success
+      res.status(200).json({ message: "Logged out successfully" });
+  } catch (error) {
+      console.error("Error in logout controller", error.message);
+      res.status(500).json({ error: "Internal server error" });
+  }
 };

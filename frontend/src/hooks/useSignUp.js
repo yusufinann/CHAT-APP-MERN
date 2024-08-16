@@ -1,8 +1,10 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useAuthContext } from "../context/AuthContext";
+
 const useSignup = () => {
 	const [loading, setLoading] = useState(false);
-
+    const{setAuthUser}=useAuthContext();
 	const signup = async ({ fullName, username, password, confirmPassword, gender }) => {
 		const success = handleInputErrors({ fullName, username, password, confirmPassword, gender });
 		if (!success) return;
@@ -16,12 +18,23 @@ const useSignup = () => {
 			});
 
 			const data = await res.json();
-			if (data.error) {
-				throw new Error(data.error);
+            if(data.error){
+                 throw new Error(data.error)
+            }
+            //localStorage
+            localStorage.setItem("chat-user",JSON.stringify(data))
+            //context
+            setAuthUser(data)
+
+			if (res.ok) {
+				// Success case
+				toast.success("Registration successful! Please log in.");
+			} else {
+				// Error case
+				toast.error(data.error || "Registration failed. Please try again.");
 			}
-		
 		} catch (error) {
-			toast.error(error.message);
+			toast.error(error.message || "An unexpected error occurred!");
 		} finally {
 			setLoading(false);
 		}
@@ -29,6 +42,7 @@ const useSignup = () => {
 
 	return { loading, signup };
 };
+
 export default useSignup;
 
 function handleInputErrors({ fullName, username, password, confirmPassword, gender }) {
