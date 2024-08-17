@@ -16,7 +16,7 @@ const Conversation = ({conversation,emoji,lastIdx}) => {
         <div className={`avatar online`}>
           <div className="w-12 rounded-full">
             <img
-              // eslint-disable-next-line react/prop-types
+               
               src={conversation.profilePic}
               alt="user avatar"
             />
