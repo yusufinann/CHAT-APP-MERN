@@ -8,9 +8,9 @@ import messageRoutes from './routes/message.routes.js';
 import userRoutes from './routes/user.routes.js';
 
 import connectToMongoDB from './db/connectToMongoDB.js';
+import { app,server} from './socket/socket.js';
 dotenv.config();
 
-const app = express();
 
 app.use(cors({
     origin: 'http://localhost:3000', // Frontend'in çalıştığı adresi belirtin
@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     connectToMongoDB();
     console.log(`Server is running on port ${PORT}`);
 });
