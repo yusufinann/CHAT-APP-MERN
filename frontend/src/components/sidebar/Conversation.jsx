@@ -1,7 +1,6 @@
 import { useSocketContext } from "../../context/SocketContext";
 import useConversation from "../../zustand/useConversation";
 
-/* eslint-disable react/prop-types */
 const Conversation = ({conversation,emoji,lastIdx}) => {
 
   const { selectedConversation, setSelectedConversation } = useConversation();
