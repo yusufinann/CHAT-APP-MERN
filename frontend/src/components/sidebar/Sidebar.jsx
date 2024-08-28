@@ -2,7 +2,7 @@ import Conversations from "./Conversations"
 import LogoutButton from "./LogoutButton.JSX"
 import SearchInput from "./SearchInput"
 
-const SideBar = () => {
+const Sidebar = () => {
   return (
 	<div className='border-r border-slate-500 p-4 flex flex-col'>
 			<SearchInput />
@@ -13,4 +13,4 @@ const SideBar = () => {
   )
 }
 
-export default SideBar
+export default Sidebar
